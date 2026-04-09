@@ -231,7 +231,11 @@ const CreateMonitorPage = () => {
 	);
 
 	const notificationOptions = useMemo(
-		() => (notifications ?? []).map((notification) => ({ ...notification, name: notification.notificationName })),
+		() =>
+			(notifications ?? []).map((notification) => ({
+				...notification,
+				name: notification.notificationName,
+			})),
 		[notifications]
 	);
 
@@ -795,12 +799,18 @@ const CreateMonitorPage = () => {
 											onChange={(e) => {
 												const val = e.target.value;
 												const parsedValue = val === "" ? 0 : Number(val);
-												field.onChange(Number.isNaN(parsedValue) ? 0 : Math.max(0, parsedValue));
+												field.onChange(
+													Number.isNaN(parsedValue) ? 0 : Math.max(0, parsedValue)
+												);
 											}}
 											type="number"
 											inputProps={{ min: 0 }}
-											fieldLabel={t("pages.createMonitor.form.escalations.option.delay.label")}
-											placeholder={t("pages.createMonitor.form.escalations.option.delay.placeholder")}
+											fieldLabel={t(
+												"pages.createMonitor.form.escalations.option.delay.label"
+											)}
+											placeholder={t(
+												"pages.createMonitor.form.escalations.option.delay.placeholder"
+											)}
 											error={!!fieldState.error}
 											helperText={fieldState.error?.message ?? ""}
 											fullWidth
@@ -814,11 +824,15 @@ const CreateMonitorPage = () => {
 										<Select
 											{...field}
 											value={field.value ?? ""}
-											fieldLabel={t("pages.createMonitor.form.escalations.option.channel.label")}
+											fieldLabel={t(
+												"pages.createMonitor.form.escalations.option.channel.label"
+											)}
 											error={!!fieldState.error}
 										>
 											<MenuItem value="">
-												{t("pages.createMonitor.form.escalations.option.channel.placeholder")}
+												{t(
+													"pages.createMonitor.form.escalations.option.channel.placeholder"
+												)}
 											</MenuItem>
 											{notificationOptions.map((notification) => (
 												<MenuItem

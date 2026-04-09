@@ -14,11 +14,7 @@ export interface INotificationsService {
 	updateById(id: string, teamId: string, updateData: Partial<Notification>): Promise<Notification>;
 	deleteById: (id: string, teamId: string) => Promise<Notification>;
 	handleNotifications: (monitor: Monitor, monitorStatusResponse: MonitorStatusResponse, decision: MonitorActionDecision) => Promise<boolean>;
-	handleEscalationNotification: (
-		monitor: Monitor,
-		monitorStatusResponse: MonitorStatusResponse,
-		escalationChannelId: string
-	) => Promise<boolean>;
+	handleEscalationNotification: (monitor: Monitor, monitorStatusResponse: MonitorStatusResponse, escalationChannelId: string) => Promise<boolean>;
 
 	sendTestNotification: (notification: Partial<Notification>) => Promise<boolean>;
 	testAllNotifications: (notificationIds: string[]) => Promise<boolean>;
